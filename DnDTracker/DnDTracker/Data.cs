@@ -1,0 +1,6 @@
+﻿namespace DnDTracker
+{
+    class Data
+    {
+    }
+}
