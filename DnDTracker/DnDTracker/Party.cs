@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DnDTracker
 {
     class Party
     {
+        //STATIC
+        public static Dictionary<string, Party> Dictionary = new Dictionary<string, Party>();
+        //
         public string Name { get; set; }
         public List<Character> PartyMembers { get; set; }
         public int NumberOfMembers { get; set; }
@@ -41,5 +45,14 @@ namespace DnDTracker
             return true;
         }
 
+        public static void Initialize()
+        {
+
+        }
+
+        public static void CreateParty()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

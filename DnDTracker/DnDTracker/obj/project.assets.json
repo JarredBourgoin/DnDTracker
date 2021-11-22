@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jarre\\Desktop\\Projects\\DnDTracker\\DnDTracker\\DnDTracker.csproj",
+      "projectUniqueName": "C:\\Users\\jarre\\Documents\\GitHub\\DnDTracker\\DnDTracker\\DnDTracker\\DnDTracker.csproj",
       "projectName": "DnDTracker",
-      "projectPath": "C:\\Users\\jarre\\Desktop\\Projects\\DnDTracker\\DnDTracker\\DnDTracker.csproj",
+      "projectPath": "C:\\Users\\jarre\\Documents\\GitHub\\DnDTracker\\DnDTracker\\DnDTracker\\DnDTracker.csproj",
       "packagesPath": "C:\\Users\\jarre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jarre\\Desktop\\Projects\\DnDTracker\\DnDTracker\\obj\\",
+      "outputPath": "C:\\Users\\jarre\\Documents\\GitHub\\DnDTracker\\DnDTracker\\DnDTracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

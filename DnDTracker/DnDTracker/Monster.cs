@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DnDTracker
 {
     class Monster
     {
+        //STATIC
+        public static Dictionary<string, Monster> Dictionary = new Dictionary<string, Monster>();
+        //
         public string Type { get; private set; }
         public string Name { get; private set; }
         public int MaxHP { get; private set; }
@@ -11,6 +15,9 @@ namespace DnDTracker
         public List<string> Resistances { get; private set; }
         public List<string> Immunities { get; private set; }
         //CONSTRUCTOR:
+        public Monster()
+        {
+        }
         public Monster(string type, string name, int maxhp, int cr)
         {
             Type = type;
@@ -18,7 +25,7 @@ namespace DnDTracker
             MaxHP = maxhp;
             CR = cr;
         }
-        public Monster(string type, string name, int maxhp, int cr, List<string> res = null, List<string> immune = null)
+        public Monster(string type, string name, int maxhp, int cr, List<string> res, List<string> immune)
         {
             Type = type;
             Name = name;
@@ -28,21 +35,15 @@ namespace DnDTracker
             Immunities = immune;
         }
 
-        public static void InitializeMonsters()
+        public static void Initialize()
         {
-            Dictionaries.Monsters.Add("Kobold", CreateMonster("Humanoid", "Kobold", 5, 1));
-            Dictionaries.Monsters.Add("Dragon", CreateMonster("Dragon", "Ancient White Dragon", 350, 21, new List<string>{ "Cold" }));
+            Monster.Dictionary.Add("Kobold", new Monster("Humanoid", "Kobold", 5, 1));
+            Monster.Dictionary.Add("Dragon", new Monster("Dragon", "Ancient White Dragon", 350, 21, new List<string>{ "Cold" }, Program.EmptyList));
         }
 
-        public static Monster CreateMonster(string type, string name, int maxhp, int cr)
+        public static void CreateMonster()
         {
-            Monster temp = new Monster(type, name, maxhp, cr);
-            return temp;
-        }
-        public static Monster CreateMonster(string type, string name, int maxhp, int cr, List<string> res = null, List<string> immune = null)
-        {
-            Monster temp = new Monster(type, name, maxhp, cr, res, immune);
-            return temp;
+            throw new NotImplementedException();
         }
     }
 

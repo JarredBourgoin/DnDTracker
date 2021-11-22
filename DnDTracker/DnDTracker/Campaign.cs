@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace DnDTracker
 {
-    class SaveLoadData
+    class Campaign
     {
         public string SaveName { get; set; }
         public List<Character> AllCurrentCharacters { get; set; }
@@ -14,9 +14,10 @@ namespace DnDTracker
         public List<Player> AllCurrentPlayers { get; set; }
         public List<Party> AllCurrentParties { get; set; }
 
-        public SaveLoadData(string name)
+        public Campaign(string name)
         {
             SaveName = name;
+            throw new NotImplementedException();
         }
 
     }
