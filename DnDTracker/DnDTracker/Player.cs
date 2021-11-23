@@ -53,20 +53,27 @@ namespace DnDTracker
             PlayersKilled = playersKilled;
             PlayersDowned = playersDowned;
             MagicItemsRewarded = magicItemsRewarded;
-
         }
 
         public Player(string name)
         {
             Name = name;
+            Deaths = 0;
+            MagicItemsTaken = 0;
+            Characters = new List<string>();
+            //DAMAGE/KILLS
             TotalDamageDone = 0;
-            TotalHealingDone = 0;
             HighestDamageDone = 0;
             KillCount = 0;
-            Deaths = 0;
             PlayerKiller = false;
-            MagicItemsTaken = 0;
+            //HEALING/TANKING
+            PlayersRevived = 0;
+            PlayersPickedUp = 0;
+            TotalHealingDone = 0;
+            TotalDamageTaken = 0;
+            //AS DM
             TotalDamageDoneAsDM = 0;
+            HighestDamageDoneAsDM = 0;
             PlayersKilled = 0;
             PlayersDowned = 0;
             MagicItemsRewarded = 0;
@@ -74,7 +81,20 @@ namespace DnDTracker
 
         public static void CreatePlayer()
         {
-            throw new NotImplementedException();
+            string Name = "name";
+            Console.Clear();
+            Misc.TopHeader();
+            Console.WriteLine("Welcome to the Player Creator. ");
+            Console.WriteLine("Would you like to create a Player?: (Y/N) ");
+            ConsoleKey enterKey = Console.ReadKey().Key;
+            if (enterKey != ConsoleKey.Y)
+            {
+                Program.MainMenu();
+            }
+            Console.WriteLine("Please enter the player's name.: ");
+            Name = Console.ReadLine();
+            Player.Dictionary.Add(Name, new Player(Name));
+            Program.MainMenu();
         }
 
     }

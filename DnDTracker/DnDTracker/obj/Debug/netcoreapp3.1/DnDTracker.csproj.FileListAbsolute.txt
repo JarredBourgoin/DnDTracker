@@ -26,3 +26,17 @@ C:\Users\jarre\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\bin\Debug\netco
 C:\Users\jarre\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\bin\Debug\netcoreapp3.1\DnDTracker.pdb
 C:\Users\jarre\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.genruntimeconfig.cache
 C:\Users\jarre\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\bin\Debug\netcoreapp3.1\DnDTracker.exe
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\bin\Debug\netcoreapp3.1\DnDTracker.deps.json
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\bin\Debug\netcoreapp3.1\DnDTracker.runtimeconfig.json
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\bin\Debug\netcoreapp3.1\DnDTracker.runtimeconfig.dev.json
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\bin\Debug\netcoreapp3.1\DnDTracker.dll
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\bin\Debug\netcoreapp3.1\DnDTracker.pdb
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.csproj.AssemblyReference.cache
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.AssemblyInfoInputs.cache
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.AssemblyInfo.cs
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.csproj.CoreCompileInputs.cache
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.dll
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.pdb
+C:\Users\jarre\OneDrive\Documents\GitHub\DnDTracker\DnDTracker\DnDTracker\obj\Debug\netcoreapp3.1\DnDTracker.genruntimeconfig.cache

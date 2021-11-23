@@ -59,6 +59,8 @@ namespace DnDTracker
 
         public static void CreateCharacter()
         {
+            Console.Clear();
+            Misc.TopHeader();
             bool tempBool = false;
             bool tempBool2 = false;
             bool validClass = false;
@@ -77,7 +79,13 @@ namespace DnDTracker
             string tempRes;
             string tempImmune;
             List<String> Immunities = new List<string>();
-            Misc.TopHeader();
+            Console.WriteLine("Welcome to the Character Creator. ");
+            Console.WriteLine("Would you like to create a character?: (Y/N) ");
+            ConsoleKey enterKey = Console.ReadKey().Key;
+            if (enterKey != ConsoleKey.Y)
+            {
+                Program.MainMenu();
+            }
             Console.WriteLine("Please enter a character name: ");
             Name = Convert.ToString(Console.ReadLine());
             Console.WriteLine("Please enter an owning player: ");
@@ -103,6 +111,8 @@ namespace DnDTracker
                     temp = true;
                     MaxHP = Convert.ToInt32(Console.ReadLine());
                     CurrentHP = MaxHP;
+                    //Debug:
+                    Console.WriteLine(CurrentHP);
                 }
                 catch
                 {
@@ -110,6 +120,7 @@ namespace DnDTracker
                 }
             }
             temp = false;
+            Console.WriteLine("Please enter your character's level: ");
             while (!temp)
             {
                 try
