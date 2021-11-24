@@ -28,6 +28,13 @@ namespace DnDTracker
                 Console.WriteLine(Convert.ToString(i));
             }
         }
+        public static void DisplayAllCharacters()
+        {
+            foreach (var p in Character.Dictionary.Values)
+            {
+                Console.WriteLine(p.Name);
+            }
+        }
         public static void DisplayPlayers()
         {
             foreach (var p in Player.Dictionary.Values)
@@ -37,6 +44,7 @@ namespace DnDTracker
         }
         public static void TopHeader()
         {
+            Console.Clear();
             Console.WriteLine("Bourgoin's Tracker");
             Console.WriteLine("------------------");
         }

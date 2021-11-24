@@ -20,7 +20,7 @@ namespace DnDTracker
         public List<String> Resistances { get; set; }
         public List<String> Immunities { get; set; }
         ///Constructors
-        public Character(string name, int maxHP, int currentHP, Classes playerClass, string owner = "None")
+        public Character(string name, int maxHP, int currentHP, Classes playerClass, string owner)
         {
             PlayerName = owner;
             Name = name;
@@ -29,16 +29,17 @@ namespace DnDTracker
             PlayerClasses = playerClass;
             IsMonster = false;
         }
-        public Character(string name, int maxHP, int currentHP, Classes playerClass, List<string> res, List<string> immune, bool isMonster, int Level, string owner = "None")
+        public Character(string name, int maxHP, int currentHP, Classes playerClass, List<string> res, List<string> immune, bool isMonster, int level, string owner)
         {
-            
             Name = name;
+            PlayerName = owner;
             MaxHP = maxHP;
             CurrentHP = currentHP;
             PlayerClasses = playerClass;
             IsMonster = isMonster;
             Resistances = res;
             Immunities = immune;
+            Level = level;
         }
 
         public Character(Monster m, int currentHP = -1)
@@ -59,6 +60,7 @@ namespace DnDTracker
 
         public static void CreateCharacter()
         {
+            bool classAdded = false;
             Console.Clear();
             Misc.TopHeader();
             bool tempBool = false;
@@ -99,9 +101,14 @@ namespace DnDTracker
                 }
                 else
                 {
+                    if(PlayerName == "Escape")
+                    {
+                        Program.MainMenu();
+                    }
                     Console.WriteLine("That player does not exist! Please try again: ");
                 }
             }
+            Console.WriteLine(PlayerName);
             Console.WriteLine("Please enter the max HP: ");
             temp = false;
             while (!temp)
@@ -120,6 +127,8 @@ namespace DnDTracker
                 }
             }
             temp = false;
+            Console.Clear();
+            Misc.TopHeader();
             Console.WriteLine("Please enter your character's level: ");
             while (!temp)
             {
@@ -137,45 +146,56 @@ namespace DnDTracker
             Misc.ListAllList(Misc.Classes);
             while(levelsRemaining > 0)
             {
+                    classAdded = false;
                     Console.WriteLine("What class would you like to put levels into?: ");
                     tempClass = Console.ReadLine();
                     if (Misc.Classes.Contains(tempClass))
                     {
-                        Console.WriteLine("How many levels would you like to put into this class?: ");
-                        try
+                    Console.WriteLine("You have " + levelsRemaining + " levels remaining.");
+                    Console.WriteLine("How many levels would you like to put into this class?: ");
+                    try
+                    {
+                        tempClassLevel = Convert.ToInt32(Console.ReadLine());
+                        if(tempClassLevel > levelsRemaining)
                         {
-                            tempClassLevel = Convert.ToInt32(Console.ReadLine());
-                            validClass = true;
-                            if(tempClassLevel > levelsRemaining)
-                            {
                                 validClass = false;
                                 Console.WriteLine("You don't have that many levels to spend!");
-                            }
                         }
-                        catch
+                        else
                         {
+                            validClass = true;
+                        }
+                    }
+                     catch
+                    {
                             Console.WriteLine("That is an invalid entry. Please try again.");
-                        }
-                        if (validClass && PlayerClass.Class1 != null)
-                        {
-                            PlayerClass.Class1 = tempClass;
-                            PlayerClass.Class1Level = tempClassLevel;
-                            levelsRemaining -= tempClassLevel;
-                        }
-                        if (validClass && PlayerClass.Class2 != null)
-                        {
+                    }
+                    if (validClass && PlayerClass.Class1 == null && !classAdded)
+                    {
+                        classAdded = true;
+                        PlayerClass.Class1 = tempClass;
+                        PlayerClass.Class1Level += tempClassLevel;
+                        levelsRemaining -= tempClassLevel;
+                    }
+                    if (validClass && PlayerClass.Class2 == null && !classAdded)
+                    {
+                        classAdded = true;
                         PlayerClass.Class2 = tempClass;
-                        PlayerClass.Class2Level = tempClassLevel;
+                        PlayerClass.Class2Level += tempClassLevel;
                         levelsRemaining -= tempClassLevel;
-                        }
-                        if (validClass && PlayerClass.Class3 != null)
-                        {
+                    }
+                    if (validClass && PlayerClass.Class3 == null && !classAdded)
+                    {
+                        classAdded = true;
                         PlayerClass.Class3 = tempClass;
-                        PlayerClass.Class3Level = tempClassLevel;
+                        PlayerClass.Class3Level += tempClassLevel;
                         levelsRemaining -= tempClassLevel;
-                        }
-                }
+                    }
+                    }
             }
+            Level = PlayerClass.Class1Level + PlayerClass.Class2Level + PlayerClass.Class3Level;
+            Console.Clear();
+            Misc.TopHeader();
             Console.WriteLine("Resistances?: \n1: Yes \n2: No");
             while (!tempBool)
             {
@@ -206,12 +226,15 @@ namespace DnDTracker
             }
             tempBool2 = false;
             tempBool = true;
+            Console.Clear();
+            Misc.TopHeader();
+            Console.WriteLine("Immunities?: \n1: Yes \n2: No");
             while (tempBool)
             {
                 ConsoleKey tempKey = Console.ReadKey().Key;
                 if (tempKey == ConsoleKey.D1)
                 {
-                    Console.WriteLine("Please enter the resistance you wish to add: ");
+                    Console.WriteLine("Please enter the immunities you wish to add: ");
                     Misc.ListAllList(Misc.DamageTypes);
                     tempBool2 = true;
                     while (tempBool2)
@@ -219,7 +242,7 @@ namespace DnDTracker
                         tempImmune = Console.ReadLine();
                         if (Misc.DamageTypes.Contains(tempImmune))
                         {
-                            Resistances.Add(tempImmune);
+                            Immunities.Add(tempImmune);
                             tempBool2 = false;
                         }
                         else
@@ -233,11 +256,13 @@ namespace DnDTracker
                     tempBool = false;
                 }
             }
-            Character.Dictionary.Add(Name, new Character(Name, MaxHP, CurrentHP, PlayerClass, Resistances, Immunities, IsMonster, Level, owner:PlayerName));
+            Character.Dictionary.Add(Name, new Character(Name, MaxHP, CurrentHP, PlayerClass, Resistances, Immunities, IsMonster, Level, PlayerName));
             Program.MainMenu();
         }
 
-
-
+        internal static void EditCharacter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -45,6 +45,11 @@ namespace DnDTracker
         {
             throw new NotImplementedException();
         }
+
+        internal static void EditMonster()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

@@ -9,7 +9,7 @@ namespace DnDTracker
 
         static void Main(string[] args)
         {
-            //Monster.Initialize();
+            Monster.Initialize();
             //Character.Initialize();
             //Party.Initialize();
             //Player.Initialize();
@@ -91,6 +91,22 @@ namespace DnDTracker
                 {
                     Party.CreateParty();
                 }
+                else if (temp == ConsoleKey.D5)
+                {
+                    Character.EditCharacter();
+                }
+                else if (temp == ConsoleKey.D6)
+                {
+                    Monster.EditMonster();
+                }
+                else if (temp == ConsoleKey.D7)
+                {
+                    Player.EditPlayer();
+                }
+                else if (temp == ConsoleKey.D8)
+                {
+                    Party.EditParty();
+                }
                 else
                 {
                     bool wrongKeyWasPressed = true;
@@ -115,7 +131,11 @@ namespace DnDTracker
 
         private static void DebugPage()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(Character.Dictionary["Jarred"].PlayerName);
+            Console.WriteLine($"Char name: {Character.Dictionary["Jarred"].Name} Char owner: {Character.Dictionary["Jarred"].PlayerName} " +
+                $" char hp: {Character.Dictionary["Jarred"].MaxHP} currenthp: {Character.Dictionary["Jarred"].CurrentHP} levels: {Character.Dictionary["Jarred"].Level} Class1: {Character.Dictionary["Jarred"].PlayerClasses.Class1} {Character.Dictionary["Jarred"].PlayerClasses.Class1Level} Class2: {Character.Dictionary["Jarred"].PlayerClasses.Class2} {Character.Dictionary["Jarred"].PlayerClasses.Class2Level}");
+            Console.ReadLine();
+            MainMenu();
         }
 
         private static void StatsPage()
@@ -136,6 +156,11 @@ namespace DnDTracker
             Console.WriteLine("2. Create Monster");
             Console.WriteLine("3. Create Player");
             Console.WriteLine("4. Create Party");
+            Console.WriteLine("------------------");
+            Console.WriteLine("5. Edit Character");
+            Console.WriteLine("6. Edit Monster");
+            Console.WriteLine("7. Edit Player");
+            Console.WriteLine("8. Edit Party");
             Console.WriteLine("------------------");
             GetUserInput("Data Entry");
         }

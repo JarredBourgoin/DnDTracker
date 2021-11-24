@@ -97,5 +97,9 @@ namespace DnDTracker
             Program.MainMenu();
         }
 
+        internal static void EditPlayer()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
