@@ -194,7 +194,6 @@ namespace DnDTracker
                     }
             }
             Level = PlayerClass.Class1Level + PlayerClass.Class2Level + PlayerClass.Class3Level;
-            Console.Clear();
             Misc.TopHeader();
             Console.WriteLine("Resistances?: \n1: Yes \n2: No");
             while (!tempBool)
@@ -226,7 +225,6 @@ namespace DnDTracker
             }
             tempBool2 = false;
             tempBool = true;
-            Console.Clear();
             Misc.TopHeader();
             Console.WriteLine("Immunities?: \n1: Yes \n2: No");
             while (tempBool)
@@ -257,6 +255,8 @@ namespace DnDTracker
                 }
             }
             Character.Dictionary.Add(Name, new Character(Name, MaxHP, CurrentHP, PlayerClass, Resistances, Immunities, IsMonster, Level, PlayerName));
+            Console.WriteLine($"Character {Name} Created! Press any key to continue...");
+            Console.ReadKey();
             Program.MainMenu();
         }
 

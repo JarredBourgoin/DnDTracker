@@ -49,9 +49,11 @@ namespace DnDTracker
             throw new NotImplementedException();
         }
 
-        internal static void CreateParty()
+        public static void CreateParty()
         {
-            bool isPlayerParty;
+            bool isContained;
+            bool isPlayerParty = false;
+            string tempString;
             List<Character> PartyMembers = new List<Character>();
             string PartyName;
             bool tempBool = true;
@@ -86,9 +88,48 @@ namespace DnDTracker
             Misc.TopHeader();
             Console.WriteLine("Please enter a party name: ");
             PartyName = Console.ReadLine();
+            while (!tempBool)
+            {
+                Misc.TopHeader();
+                Console.WriteLine("Please add characters to the party.\nAvailable Characters: ");
+                Misc.DisplayAllCharacters();
+                if(Character.Dictionary.Count == 0)
+                {
+                    Console.WriteLine("There are no available characters to add...");
+                    Console.ReadKey();
+                    Program.MainMenu();
+                }
+                tempString = Console.ReadLine();
+                if (Character.Dictionary.ContainsKey(tempString))
+                {
+                    PartyMembers.Add(Character.Dictionary[tempString]);
+                    isContained = true;
+                }
+                else
+                {
+                    if (tempString == "Escape")
+                    {
+                        Program.MainMenu();
+                    }
+                    isContained = false;
+                    Console.WriteLine("That character does not exist! Please try again: ");
+                }
+                if (isContained)
+                {
+                    Console.WriteLine("Would you like to add another character? (Y/N): ");
+                    ConsoleKey temp = Console.ReadKey().Key;
+                    if (temp == ConsoleKey.N)
+                    {
+                        tempBool = true;
+                    }
+                    isContained = false;
+                }
+            }
+            Party.Dictionary.Add(PartyName, new Party(PartyName, isPlayerParty, PartyMembers));
             Misc.TopHeader();
-            Console.WriteLine("Please add characters to the party.\nAvailable Characters: ");
-            Misc.DisplayAllCharacters();
+            Console.WriteLine($"Party {PartyName} Created! Press any key to continue...");
+            Console.ReadKey();
+            Program.MainMenu();
         }
     }
 }

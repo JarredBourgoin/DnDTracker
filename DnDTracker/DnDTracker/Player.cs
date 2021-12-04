@@ -94,6 +94,8 @@ namespace DnDTracker
             Console.WriteLine("Please enter the player's name.: ");
             Name = Console.ReadLine();
             Player.Dictionary.Add(Name, new Player(Name));
+            Console.WriteLine($"Player {Name} Created! Press any key to continue...");
+            Console.ReadKey();
             Program.MainMenu();
         }
 
