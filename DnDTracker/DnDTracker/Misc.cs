@@ -17,16 +17,26 @@ namespace DnDTracker
 
         public static void ListAllList(List<string> List)
         {
-            foreach(string i in List)
+            int j = 1;
+            if(List != null)
             {
-                Console.WriteLine(i);
+                foreach (string i in List)
+                {
+                    Console.WriteLine($"{j}. {i}");
+                    j++;
+                }
             }
         }
         public static void ListAllList(List<int> List)
         {
-            foreach (int i in List)
+            int j = 1;
+            if(List != null)
             {
-                Console.WriteLine(Convert.ToString(i));
+                foreach (int i in List)
+                {
+                    Console.WriteLine($"{j}. {i}");
+                    j++;
+                }
             }
         }
         public static void DisplayAllCharacters()
@@ -70,6 +80,36 @@ namespace DnDTracker
             Console.Clear();
             Console.WriteLine("Bourgoin's Tracker");
             Console.WriteLine("------------------");
+        }
+
+        public static void WriteLine()
+        {
+            Console.WriteLine("------------------");
+        }
+
+        public static bool Continue(string whatAreYouDoing)
+        {
+            bool whileLoopBool = true;
+            Misc.TopHeader();
+            Console.WriteLine($"Would you like to continue {whatAreYouDoing}?");
+            Console.WriteLine("1. Yes");
+            Console.WriteLine("2. No");
+            Misc.WriteLine();
+            while (whileLoopBool)
+            {
+                ConsoleKey temp = Console.ReadKey().Key;
+                switch (temp)
+                {
+                    case ConsoleKey.D1:
+                        return true;
+                    case ConsoleKey.D2:
+                        return false;
+                    default:
+                        Console.WriteLine("You have entered an incorrect value, please try again.");
+                        break;
+                }
+            }
+            return false;
         }
     }
 }

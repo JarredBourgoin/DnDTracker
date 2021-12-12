@@ -20,6 +20,11 @@ namespace DnDTracker
         public List<String> Resistances { get; set; }
         public List<String> Immunities { get; set; }
         ///Constructors
+        ///
+        public Character()
+        {
+
+        }
         public Character(string name, int maxHP, int currentHP, Classes playerClass, string owner)
         {
             PlayerName = owner;
@@ -82,9 +87,11 @@ namespace DnDTracker
             string tempImmune;
             List<String> Immunities = new List<string>();
             Console.WriteLine("Welcome to the Character Creator. ");
-            Console.WriteLine("Would you like to create a character?: (Y/N) ");
-            ConsoleKey enterKey = Console.ReadKey().Key;
-            if (enterKey != ConsoleKey.Y)
+            if(Misc.Continue("creating a character"))
+            {
+                Misc.TopHeader();
+            }
+            else
             {
                 Program.MainMenu();
             }

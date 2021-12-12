@@ -46,8 +46,131 @@ namespace DnDTracker
 
         public static void EditParty()
         {
-            throw new NotImplementedException();
+            string tempString;
+            ConsoleKey enterKey;
+            Party tempParty;
+            string inputString = "none";
+            bool whileLoopBool = true;
+            bool whileLoopBool2 = true;
+            bool whileLoopBool3 = true;
+            Misc.TopHeader();
+            if(Party.Dictionary.Count == 0)
+            {
+                Console.WriteLine("There are no existing parties to edit, returning to main menu...");
+                Console.ReadKey();
+                Program.MainMenu();
+            }
+            Console.WriteLine("Please enter the name of the party you wish to edit: ");
+            Misc.DisplayParties();
+            Console.WriteLine("---------------");
+            whileLoopBool = true;
+            while (whileLoopBool)
+            {
+                inputString = Console.ReadLine();
+                if (Party.Dictionary.ContainsKey(inputString))
+                {
+                    whileLoopBool2 = true;
+                    while (whileLoopBool2)
+                    {
+                        int i = 1;
+                        tempParty = Party.Dictionary[inputString];
+                        Misc.TopHeader();
+                        Console.WriteLine($"You have selected the {tempParty.Name} Party. \nCurrent Members:");
+                        foreach (Character c in tempParty.PartyMembers)
+                        {
+                            Console.WriteLine($"{i}. {c.Name}");
+                        }
+                        Misc.WriteLine();
+                        Console.WriteLine("1. Add a character\n2. Remove a character\n3. Finish editing\n4. Return to main menu ");
+                        enterKey = Console.ReadKey().Key;
+                        bool isContained;
+                        switch (enterKey)
+                        {
+                            case ConsoleKey.D1:
+                                whileLoopBool3 = true;
+                                while (whileLoopBool3)
+                                {
+                                    Misc.TopHeader();
+                                    Console.WriteLine("Please add characters to the party.\nAvailable Characters: ");
+                                    Misc.DisplayAllCharacters();
+                                    if (Character.Dictionary.Count == 0)
+                                    {
+                                        Console.WriteLine("There are no available characters to add...");
+                                        Console.ReadKey();
+                                        Program.MainMenu();
+                                    }
+                                    tempString = Console.ReadLine();
+                                    if (Character.Dictionary.ContainsKey(tempString))
+                                    {
+                                        tempParty.PartyMembers.Add(Character.Dictionary[tempString]);
+                                        isContained = true;
+                                    }
+                                    else
+                                    {
+                                        if (tempString == "Escape")
+                                        {
+                                            Program.MainMenu();
+                                        }
+                                        isContained = false;
+                                        Console.WriteLine("That character does not exist! Please try again: ");
+                                    }
+                                    if (isContained)
+                                    {
+                                        Console.WriteLine("Would you like to add another character? (Y/N): ");
+                                        ConsoleKey temp = Console.ReadKey().Key;
+                                        if (temp == ConsoleKey.N)
+                                        {
+                                            whileLoopBool3 = false;
+                                        }
+                                        isContained = false;
+                                    }
+                                }
+                                break;
+                            case ConsoleKey.D2:
+                                whileLoopBool3 = true;
+                                isContained = false;
+                                Character tempCharacter = new Character();
+                                while (whileLoopBool3)
+                                {
+                                    Misc.TopHeader();
+                                    Console.WriteLine($"You have selected the {tempParty.Name} Party. \nCurrent Members:");
+                                    foreach (Character c in tempParty.PartyMembers)
+                                    {
+                                        Console.WriteLine($"{i}. {c.Name}");
+                                    }
+                                    Misc.WriteLine();
+                                    Console.WriteLine("Please enter the name of the party member that you wish to remove: ");
+                                    tempString = Console.ReadLine();
+                                    foreach(Character c in tempParty.PartyMembers)
+                                    {
+                                        if(c.Name == tempString)
+                                        {
+                                            tempCharacter = c;
+                                            isContained = true;
+                                        }
+                                    }
+                                    if (isContained)
+                                    {
+                                        tempParty.PartyMembers.Remove(tempCharacter);
+                                        Console.WriteLine($"{tempCharacter.Name} removed from {tempParty.Name}!");
+                                        Misc.WriteLine();
+                                        whileLoopBool3 = Misc.Continue("removing characters");
+                                    }
+                                }
+                                break;
+                        }
+                        whileLoopBool2 = Misc.Continue("editing this party");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("You have entered an incorrect party name, please try again...\n");
+                    Console.ReadKey();
+                }
+                whileLoopBool = Misc.Continue("editing any parties");
+            }
         }
+
 
         public static void CreateParty()
         {
